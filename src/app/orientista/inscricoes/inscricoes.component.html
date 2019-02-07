@@ -1,0 +1,40 @@
+<ul *ngIf="eventos" class="row">
+  <li *ngFor="let evento of eventos">
+    <div class="card hoverable col s12 m5">
+      <div class="card-content">
+        <div class="card-title">
+          <a routerLink="../detalhe-evento/{{evento.idEvento}}">
+            <span>{{evento.nomeEvento}}</span>
+          </a>
+        </div>
+        <span class="green-text" *ngIf="evento.pagoParticipacao">Pago<i class="material-icons">check</i></span>
+        <button data-target="modal1" class="btn blue-grey darken-3 modal-trigger" (click)="selectEvento(evento)" id="enviarComprovante"
+                *ngIf="!evento.pagoParticipacao && evento.precoEvento > 0 ">Enviar
+          comprovante de pagamento
+        </button>
+      </div>
+    </div>
+  </li>
+</ul>
+<!--TODO terminar o pagamento dos eventos (enviar comprovante)-->
+<!--TODO adicionar loader durante o upload de arquivo-->
+<div id="modal1" class="modal">
+  <div class="modal-content row">
+    <h5 class="col s12 center">Enviar foto de comprovante</h5>
+    <form #fileForm="ngForm" (ngSubmit)="sendFile()" enctype="multipart/form-data" class="col s12 m6" >
+      <fieldset class="file-field input-field">
+        <div class="btn">
+          <span>File</span>
+          <input type="file" name="file" id="file-input" accept="image/*" (change)="showFile($event)" required="">
+        </div>
+        <div class="file-path-wrapper">
+          <input class="file-path validate" type="text">
+        </div>
+      </fieldset>
+      <button class="btn blue-grey darken-3" [disabled]="!fileForm.form.valid" type="submit">Enviar</button>
+    </form>
+    <div class="col s12 m6 img-container">
+      <img style="object-fit: contain;" class="responsive-img " src="" alt="previzualização" id="output"/>
+    </div>
+  </div>
+</div>

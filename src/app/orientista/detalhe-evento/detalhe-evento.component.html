@@ -1,0 +1,9 @@
+<div class="container" *ngIf="evento">
+  <h2>{{evento.nomeEvento}}</h2>
+  <div class="row">
+    <button class="btn green-text" (click)="inscricao()" [ngClass]="{'btn-flat green lighten-4': evento.inscrito,'white': !evento.inscrito}">
+      Inscrição <i class="material-icons" *ngIf="evento.inscrito">check</i>
+    </button>
+    <h5>Inscrições até: {{evento.inscricaoEvento}}</h5>
+  </div>
+</div>
