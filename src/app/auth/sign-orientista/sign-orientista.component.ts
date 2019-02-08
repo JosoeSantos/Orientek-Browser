@@ -15,7 +15,7 @@ export class SignOrientistaComponent implements OnInit {
   clubes;
   enviando = false;
 
-  defaltHost = '';
+    defaltHost = 'http://localhost/Orientek/sync';
 
   // defaltHost='http://localhost/Orientek/sync';
   constructor(private http: HttpClient,

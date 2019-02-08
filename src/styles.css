@@ -155,3 +155,18 @@ fieldset {
   border: 1px solid #bdbdbd;
   padding: .5rem;
 }
+
+.auth-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.auth-header h4 {
+  flex: 1 1 100%;
+}
+
+.logo-header {
+  max-width: 350px;
+}

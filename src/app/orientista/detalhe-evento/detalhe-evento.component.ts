@@ -10,7 +10,7 @@ import {HttpClient} from '@angular/common/http';
 })
 export class DetalheEventoComponent implements OnInit {
 
-  defaltHost = '';
+    defaltHost = 'http://localhost/Orientek/sync';
 
   // defaltHost='http://localhost/Orientek/sync';
 

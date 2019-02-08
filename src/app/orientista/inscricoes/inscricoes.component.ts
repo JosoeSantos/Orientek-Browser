@@ -12,7 +12,7 @@ export class InscricoesComponent implements OnInit {
   selectedEvento;
   imagem;
   modal;
-  defaltHost = '';
+    defaltHost = 'http://localhost/Orientek/sync';
 
   // defaltHost='http://localhost/Orientek/sync';
   constructor(private http: HttpClient) {

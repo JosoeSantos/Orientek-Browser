@@ -15,7 +15,7 @@ export class CadastroEventosComponent implements OnInit {
   cidades;
   enviando: boolean;
 
-  defaltHost = '';
+    defaltHost = 'http://localhost/Orientek/sync';
 
   // defaltHost='http://localhost/Orientek/sync';
 

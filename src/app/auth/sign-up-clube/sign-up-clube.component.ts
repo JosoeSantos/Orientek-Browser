@@ -13,7 +13,7 @@ export class SignUpClubeComponent implements OnInit {
   estados;
   cidades;
   enviando = false;
-  defaltHost = '';
+    defaltHost = 'http://localhost/Orientek/sync';
   // defaltHost='http://localhost/Orientek/sync';
 
   constructor(private http: HttpClient,

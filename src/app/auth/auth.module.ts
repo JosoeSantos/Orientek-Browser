@@ -7,9 +7,10 @@ import {FormsModule} from '@angular/forms';
 import { LoginOrientistaComponent } from './login-orientista/login-orientista.component';
 import { SignOrientistaComponent } from './sign-orientista/sign-orientista.component';
 import { SignUpClubeComponent } from './sign-up-clube/sign-up-clube.component';
+import {AuthComponent} from './auth/auth.component';
 
 @NgModule({
-  declarations: [LoginClubeComponent, LoginOrientistaComponent, SignOrientistaComponent, SignUpClubeComponent],
+    declarations: [LoginClubeComponent, LoginOrientistaComponent, SignOrientistaComponent, SignUpClubeComponent, AuthComponent],
   imports: [
     CommonModule,
     FormsModule,

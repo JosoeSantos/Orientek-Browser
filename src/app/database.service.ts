@@ -10,7 +10,7 @@ export class DatabaseService {
 
   private dbName = 'sistema_oriente';
 
-  defaltHost = '';
+    defaltHost = 'http://localhost/Orientek/sync';
 
   // defaltHost='http://localhost/Orientek/sync';
 
