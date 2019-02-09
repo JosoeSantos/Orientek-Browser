@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {AuthOrientistaService} from '../../auth/auth-orientista.service';
+import {AutoInit} from 'materialize-css';
 
 @Component({
   selector: 'app-navbar-orientista',

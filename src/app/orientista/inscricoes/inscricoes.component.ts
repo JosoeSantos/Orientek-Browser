@@ -12,9 +12,9 @@ export class InscricoesComponent implements OnInit {
   selectedEvento;
   imagem;
   modal;
-    defaltHost = 'http://localhost/Orientek/sync';
+  defaultHost = 'http://localhost:80/Orientek';
 
-  // defaltHost='http://localhost/Orientek/sync';
+  // defaultHost='http://localhost:80/Orientek';
   constructor(private http: HttpClient) {
   }
 
@@ -23,7 +23,7 @@ export class InscricoesComponent implements OnInit {
     const modalElem = document.getElementById('modal1');
     this.modal = M.Modal.getInstance(modalElem);
     const token = localStorage.getItem('token');
-    this.http.get(this.defaltHost + '/api/corredor/eventos.php', {
+    this.http.get(this.defaultHost + '/api/corredor/eventos.php', {
       headers: {
         'Authorization': token
       }
@@ -47,7 +47,7 @@ export class InscricoesComponent implements OnInit {
     const formData: FormData = new FormData();
     formData.append('file', this.imagem, this.imagem.name);
     formData.append('evento', this.selectedEvento.idEvento);
-    this.http.post(this.defaltHost + '/api/corredor/eventos.php', formData, {
+    this.http.post(this.defaultHost + '/api/corredor/eventos.php', formData, {
       headers: {
         'Authorization': token
       }, responseType: 'text'

@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {InputFormatterService} from '../../input-formatter.service';
 import {HttpClient} from '@angular/common/http';
-import {AutoInit} from 'materialize-css';
 import {Router} from '@angular/router';
 
 @Component({
@@ -15,9 +14,9 @@ export class CadastroEventosComponent implements OnInit {
   cidades;
   enviando: boolean;
 
-    defaltHost = 'http://localhost/Orientek/sync';
+  defaultHost = 'http://localhost:80/Orientek';
 
-  // defaltHost='http://localhost/Orientek/sync';
+  // defaultHost='http://localhost:80/Orientek';
 
   constructor(public formatter: InputFormatterService,
               private http: HttpClient,
@@ -25,7 +24,7 @@ export class CadastroEventosComponent implements OnInit {
   }
 
   buscaEstados() {
-    this.http.get(this.defaltHost + '/api/buscaEstados.php').subscribe(
+    this.http.get(this.defaultHost + '/api/buscaEstados.php').subscribe(
       (data: []) => {
         this.estados = data;
         setTimeout(() => {
@@ -38,7 +37,7 @@ export class CadastroEventosComponent implements OnInit {
 
   buscaCidade() {
     const estado: any = document.getElementById('estado');
-    this.http.get(this.defaltHost + '/api/buscaCidade.php?estado=' + estado.value).subscribe(
+    this.http.get(this.defaultHost + '/api/buscaCidade.php?estado=' + estado.value).subscribe(
       (data) => {
         this.cidades = data;
         setTimeout(() => {
@@ -57,7 +56,7 @@ export class CadastroEventosComponent implements OnInit {
     const formElem = <HTMLFormElement>document.getElementById('cad-eventos');
     const data = new FormData(formElem);
     this.enviando = true;
-    this.http.post(this.defaltHost + '/api/clube/eventos.php', data).subscribe(
+    this.http.post(this.defaultHost + '/api/clube/eventos.php', data).subscribe(
       (response: any) => {
         if (!response.success) {
           M.toast({html: response.data});

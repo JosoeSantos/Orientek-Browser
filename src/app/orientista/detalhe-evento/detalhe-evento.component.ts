@@ -2,7 +2,6 @@ import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, ParamMap} from '@angular/router';
 import {switchMap} from 'rxjs/operators';
 import {HttpClient} from '@angular/common/http';
-
 @Component({
   selector: 'app-detalhe-evento',
   templateUrl: './detalhe-evento.component.html',
@@ -10,11 +9,11 @@ import {HttpClient} from '@angular/common/http';
 })
 export class DetalheEventoComponent implements OnInit {
 
-    defaltHost = 'http://localhost/Orientek/sync';
+  defaultHost = 'http://localhost:80/Orientek';
 
-  // defaltHost='http://localhost/Orientek/sync';
+  // defaultHost='http://localhost:80/Orientek';
 
-  queryUrl = this.defaltHost + '/api/corredor/eventos.php?id=';
+  queryUrl = this.defaultHost + '/api/corredor/eventos.php?id=';
   evento;
 
   constructor(private activeRoute: ActivatedRoute,
@@ -40,17 +39,20 @@ export class DetalheEventoComponent implements OnInit {
   }
 
   inscricao() {
-    const uid = localStorage.getItem('Uid');
-    const token = localStorage.getItem('token');
-    this.http.post(this.defaltHost + '/api/corredor/eventos.php', {evento: this.evento.idEvento}, {
-      headers: {
-        'Authorization': token
-      }
-    }).subscribe((data: any) => {
-      this.evento.inscrito = data.ok;
-      if (!data.ok) {
-        M.toast({html: '<span class="red-text">Erro:</span>'});
-      }
-    });
+    console.log('inscrição');
+    if (!this.evento.inscrito) {
+      const uid = localStorage.getItem('Uid');
+      const token = localStorage.getItem('token');
+      this.http.post(this.defaultHost + '/api/corredor/eventos.php', {evento: this.evento.idEvento}, {
+        headers: {
+          'Authorization': token
+        }
+      }).subscribe((data: any) => {
+        this.evento.inscrito = data.ok;
+        if (!data.ok) {
+          M.toast({html: '<span class="red-text">Erro:</span>'});
+        }
+      });
+    }
   }
 }

@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {Observable, Subject} from 'rxjs';
+import {Subject} from 'rxjs';
 import {EventosService} from '../eventos.service';
 import {debounceTime, distinctUntilChanged, switchMap} from 'rxjs/operators';
 
@@ -29,6 +29,10 @@ export class BuscarEventosComponent implements OnInit {
       this.results = data;
       console.log(data);
       this.loading = false;
+    }, (err) => {
+      console.error(err);
+      this.loading = false;
+
     });
   }
 

@@ -13,8 +13,9 @@ export class SignUpClubeComponent implements OnInit {
   estados;
   cidades;
   enviando = false;
-    defaltHost = 'http://localhost/Orientek/sync';
-  // defaltHost='http://localhost/Orientek/sync';
+  defaultHost = 'http://localhost:80/Orientek';
+
+  // defaultHost='http://localhost:80/Orientek';
 
   constructor(private http: HttpClient,
               private router: Router,
@@ -26,7 +27,7 @@ export class SignUpClubeComponent implements OnInit {
   }
 
   buscaEstados() {
-    this.http.get(this.defaltHost + '/api/buscaEstados.php').subscribe(
+    this.http.get(this.defaultHost + '/api/buscaEstados.php').subscribe(
       (data: []) => {
         this.estados = data;
         setTimeout(() => {
@@ -39,7 +40,7 @@ export class SignUpClubeComponent implements OnInit {
 
   buscaCidade() {
     const estado: any = document.getElementById('estado');
-    this.http.get(this.defaltHost + '/api/buscaCidade.php?estado=' + estado.value).subscribe(
+    this.http.get(this.defaultHost + '/api/buscaCidade.php?estado=' + estado.value).subscribe(
       (data) => {
         this.cidades = data;
         setTimeout(() => {
@@ -53,7 +54,7 @@ export class SignUpClubeComponent implements OnInit {
     const formElem = <HTMLFormElement>document.getElementById('form-cadastro');
     const data = new FormData(formElem);
     this.enviando = true;
-    this.http.post(this.defaltHost + '/api/clube/signUp.php', data).subscribe(
+    this.http.post(this.defaultHost + '/api/clube/signUp.php', data).subscribe(
       (response: any) => {
         if (!response.success) {
           M.toast({html: response.data});

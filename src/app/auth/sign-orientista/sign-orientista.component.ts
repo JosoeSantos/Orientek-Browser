@@ -1,4 +1,4 @@
-import {Component, OnInit, ɵWRAP_RENDERER_FACTORY2} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Router} from '@angular/router';
 import {InputFormatterService} from '../../input-formatter.service';
@@ -15,9 +15,9 @@ export class SignOrientistaComponent implements OnInit {
   clubes;
   enviando = false;
 
-    defaltHost = 'http://localhost/Orientek/sync';
+  defaultHost = 'http://localhost:80/Orientek';
 
-  // defaltHost='http://localhost/Orientek/sync';
+  // defaultHost='http://localhost:80/Orientek';
   constructor(private http: HttpClient,
               private router: Router,
               public formatter: InputFormatterService) {
@@ -33,7 +33,7 @@ export class SignOrientistaComponent implements OnInit {
     const formElem = <HTMLFormElement>document.getElementById('form-cadastro');
     const data = new FormData(formElem);
     this.enviando = true;
-    this.http.post(this.defaltHost + '/api/corredor/signUp.php', data).subscribe(
+    this.http.post(this.defaultHost + '/api/corredor/signUp.php', data).subscribe(
       (response: any) => {
         if (!response.success) {
           M.toast({html: response.data});
@@ -53,7 +53,7 @@ export class SignOrientistaComponent implements OnInit {
   }
 
   buscaEstados() {
-    this.http.get(this.defaltHost + '/api/buscaEstados.php').subscribe(
+    this.http.get(this.defaultHost + '/api/buscaEstados.php').subscribe(
       (data: []) => {
         this.estados = data;
         setTimeout(() => {
@@ -66,7 +66,7 @@ export class SignOrientistaComponent implements OnInit {
 
   buscaCidade() {
     const estado: any = document.getElementById('estado');
-    this.http.get(this.defaltHost + '/api/buscaCidade.php?estado=' + estado.value).subscribe(
+    this.http.get(this.defaultHost + '/api/buscaCidade.php?estado=' + estado.value).subscribe(
       (data) => {
         this.cidades = data;
         setTimeout(() => {
@@ -86,7 +86,7 @@ export class SignOrientistaComponent implements OnInit {
     }*/
 
   buscaClubes() {
-    this.http.get(this.defaltHost + '/api/buscaClubes.php').subscribe(
+    this.http.get(this.defaultHost + '/api/buscaClubes.php').subscribe(
       (data: []) => {
         this.clubes = data;
         setTimeout(() => {

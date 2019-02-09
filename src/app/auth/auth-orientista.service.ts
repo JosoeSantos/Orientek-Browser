@@ -14,6 +14,8 @@ export class AuthOrientistaService {
 
   public loggedUser;
 
+  defaultHost = 'http://localhost:80/Orientek/api';
+
   constructor(private http: HttpClient,
               private router: Router) {
   }
@@ -32,7 +34,7 @@ export class AuthOrientistaService {
 
   loginUser(user: GenericUser) {
 
-    const req = this.http.post('http://localhost/Orientek/sync/api/corredor/auth.php', user);
+    const req = this.http.post(this.defaultHost + '/corredor/auth.php', user);
     req.subscribe((response: any) => {
         if (response.token) {
           localStorage.setItem('token', response.token);
@@ -57,7 +59,7 @@ export class AuthOrientistaService {
   getUser() {
     const token = localStorage.getItem('token');
     const id = localStorage.getItem('Uid');
-    return this.http.post('http://localhost/Orientek/sync/api/corredor/auth.php', {token: token, id: id});
+    return this.http.post(this.defaultHost + '/corredor/auth.php', {token: token, id: id});
   }
 
   logout() {

@@ -3,7 +3,6 @@ import {HttpClient} from '@angular/common/http';
 import {Token} from '../model/token';
 import {GenericUser} from '../model/generic-user';
 import {ActivatedRoute, Router} from '@angular/router';
-import {el} from '@angular/platform-browser/testing/src/browser_util';
 
 @Injectable({
   providedIn: 'root'
@@ -42,7 +41,7 @@ export class AuthService {
   }
 
   public loginUser(user: GenericUser) {
-    return this.http.post<Token>('http://localhost:80/Orientek/sync/auth.php', user)
+    return this.http.post<Token>('http://localhost:80/Orientek/auth.php', user)
       .subscribe((response: any) => {
         if (response.token) {
           console.log(response);
@@ -72,7 +71,7 @@ export class AuthService {
   public getUser() {
     const token = localStorage.getItem('authToken');
     const id = localStorage.getItem('CId');
-    return this.http.post('http://localhost:80/Orientek/sync/auth.php', {token: token, id: id});
+    return this.http.post('http://localhost:80/Orientek/auth.php', {token: token, id: id});
   }
 
   logout() {

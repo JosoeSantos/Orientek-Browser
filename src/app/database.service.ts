@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {Observable, of} from 'rxjs';
+import {Observable} from 'rxjs';
 import {HttpClient} from '@angular/common/http';
 import {AuthService} from './auth/auth.service';
 
@@ -10,9 +10,9 @@ export class DatabaseService {
 
   private dbName = 'sistema_oriente';
 
-    defaltHost = 'http://localhost/Orientek/sync';
+  defaultHost = 'http://localhost:80/Orientek';
 
-  // defaltHost='http://localhost/Orientek/sync';
+  // defaultHost='http://localhost:80/Orientek';
 
   private IndxDb: IDBFactory;
 
@@ -165,7 +165,7 @@ export class DatabaseService {
     const token = localStorage.getItem('authToken');
     return new Observable(subscriber => {
       if (navigator.onLine) {
-        this.http.get(this.defaltHost + '/api/clube/eventos.php?participacoes=1&id=' + id,
+        this.http.get(this.defaultHost + '/api/clube/eventos.php?participacoes=1&id=' + id,
           {
             headers: {
               'Authorization': token
@@ -216,7 +216,7 @@ export class DatabaseService {
   syncEventosDownload(): Observable<any> {
     return new Observable(subscriber => {
       const token = localStorage.getItem('authToken');
-      this.http.get(this.defaltHost + '/api/clube/eventos.php', {
+      this.http.get(this.defaultHost + '/api/clube/eventos.php', {
         headers: {
           'Authorization': token
         }
@@ -246,7 +246,7 @@ export class DatabaseService {
   syncDowload() {
     return new Observable(subscriber => {
       const token = localStorage.getItem('authToken');
-      this.http.get(this.defaltHost + '/upload.php', {
+      this.http.get(this.defaultHost + '/upload.php', {
         headers: {
           'Authorization': token
         }
