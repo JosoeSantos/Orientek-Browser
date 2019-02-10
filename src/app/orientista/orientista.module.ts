@@ -9,6 +9,7 @@ import { BuscarEventosComponent } from './buscar-eventos/buscar-eventos.componen
 import {FormsModule} from '@angular/forms';
 import { DetalheEventoComponent } from './detalhe-evento/detalhe-evento.component';
 import { InscricoesComponent } from './inscricoes/inscricoes.component';
+import {EnviarComprovanteComponent} from './enviar-comprovante/enviar-comprovante.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { InscricoesComponent } from './inscricoes/inscricoes.component';
     InicioComponent,
     BuscarEventosComponent,
     DetalheEventoComponent,
-    InscricoesComponent
+    InscricoesComponent,
+    EnviarComprovanteComponent
   ],
   imports: [
     CommonModule,

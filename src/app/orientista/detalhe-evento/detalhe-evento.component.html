@@ -25,10 +25,13 @@
         <dd class="description-subtitle" *ngIf="evento.precoEvento > 0">
             <label>Agencia:</label><span>{{evento.agenciaClube}}</span></dd>
     </dl>
-    <button class="btn blue-grey darken-4" *ngIf="evento.precoEvento > 0 && evento.pagoParticipacao == 0">Enviar
+    <button data-target="modal1" class="btn blue-grey darken-4 modal-trigger"
+            *ngIf="evento.precoEvento > 0 && evento.pagoParticipacao == 0">Enviar
         Comprovante<i
                 class="material-icons right">send</i></button>
-    <button class="btn blue-grey darken-4" *ngIf="evento.precoEvento > 0 && evento.pagoParticipacao > 0">Alterar
-        comprovante
+    <button data-target="modal1" class="btn blue-grey darken-4 modal-trigger"
+            *ngIf="evento.precoEvento > 0 && evento.pagoParticipacao > 0">Alterar
+        comprovante<i class="material-icons right">edit</i>
     </button>
 </div>
+<app-enviar-comprovante [evento]="evento"></app-enviar-comprovante>

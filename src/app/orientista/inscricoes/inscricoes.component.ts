@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 
 @Component({
@@ -7,11 +7,9 @@ import {HttpClient} from '@angular/common/http';
   styleUrls: ['./inscricoes.component.css']
 })
 export class InscricoesComponent implements OnInit {
+
   eventos;
-  submete = false;
   selectedEvento;
-  imagem;
-  modal;
   defaultHost = 'http://localhost:80/Orientek';
 
   // defaultHost='http://localhost:80/Orientek';
@@ -19,9 +17,6 @@ export class InscricoesComponent implements OnInit {
   }
 
   ngOnInit() {
-    M.AutoInit();
-    const modalElem = document.getElementById('modal1');
-    this.modal = M.Modal.getInstance(modalElem);
     const token = localStorage.getItem('token');
     this.http.get(this.defaultHost + '/api/corredor/eventos.php', {
       headers: {
@@ -29,33 +24,7 @@ export class InscricoesComponent implements OnInit {
       }
     }).subscribe((res: any) => {
       this.eventos = res;
-    });
-  }
-
-  showFile(ev: any) {
-    const reader = new FileReader();
-    reader.onload = function () {
-      const output: any = document.getElementById('output');
-      output.src = reader.result;
-    };
-    reader.readAsDataURL(ev.target.files[0]);
-    this.imagem = ev.target.files[0];
-  }
-
-  sendFile() {
-    const token = localStorage.getItem('token');
-    const formData: FormData = new FormData();
-    formData.append('file', this.imagem, this.imagem.name);
-    formData.append('evento', this.selectedEvento.idEvento);
-    this.http.post(this.defaultHost + '/api/corredor/eventos.php', formData, {
-      headers: {
-        'Authorization': token
-      }, responseType: 'text'
-    }).subscribe((response: any) => {
-      if (response.ok) {
-        M.toast({html: 'Comprovante enviado'});
-        this.modal.close();
-      }
+      console.log(this.eventos);
     });
   }
 
