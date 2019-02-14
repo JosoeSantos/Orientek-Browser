@@ -13,6 +13,11 @@ export class DetalheEventoComponent implements OnInit {
   flag = true;
   participacoes;
   corredores;
+  modal;
+
+  selectedCorredor;
+  selectedParticipacao;
+
   corredor = function (participacao) {
     return this.corredores.find(corredor => corredor.idCorredor = participacao.idCorredor);
   };
@@ -35,6 +40,8 @@ export class DetalheEventoComponent implements OnInit {
         this.getEvento();
       });
     });
+    const elemsModal = document.querySelectorAll('.modal');
+    this.modal = M.Modal.init(elemsModal, {});
   }
 
   getEvento() {
@@ -62,6 +69,12 @@ export class DetalheEventoComponent implements OnInit {
       console.error(err);
       M.toast({html: 'Erro desconhecido'});
     });
+  }
+
+  select(corredor, participacao) {
+    this.selectedCorredor = corredor;
+    this.selectedParticipacao = participacao;
+
   }
 
 }

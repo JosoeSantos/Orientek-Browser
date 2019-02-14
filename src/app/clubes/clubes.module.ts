@@ -11,9 +11,9 @@ import {CadastroEventosComponent} from './cadastro-eventos/cadastro-eventos.comp
 import {DetalheEventoComponent} from './detalhe-evento/detalhe-evento.component';
 import {FormsModule} from '@angular/forms';
 import {MainEventListComponent} from './main-event-list/main-event-list.component';
-import { PagamentosListComponent } from './pagamentos-list/pagamentos-list.component';
-import { ClubesListaEventosComponent } from './clubes-lista-eventos/clubes-lista-eventos.component';
+import {ClubesListaEventosComponent} from './clubes-lista-eventos/clubes-lista-eventos.component';
 import {LoadingPanelComponent} from './loading-panel/loading-panel.component';
+import {ValidarCorredorComponent} from './validar-corredor/validar-corredor.component';
 
 
 @NgModule({
@@ -25,9 +25,9 @@ import {LoadingPanelComponent} from './loading-panel/loading-panel.component';
     NavbarClubesComponent,
     AsideClubesComponent,
     MainEventListComponent,
-    PagamentosListComponent,
     ClubesListaEventosComponent,
-    LoadingPanelComponent
+    LoadingPanelComponent,
+    ValidarCorredorComponent
   ],
   imports: [
     CommonModule,
